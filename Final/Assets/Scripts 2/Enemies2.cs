@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemies2 : MonoBehaviour
 {
     //variables for the game
     Health2 damage;
-
     public GameObject player;
 
     // Start is called before the first frame update
@@ -21,6 +21,13 @@ public class Enemies2 : MonoBehaviour
         {
             damage.TakeDamage(1);
         }
+    }
 
+      void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Ground"))      //if the other object is tag as ground
+        {
+            damage.TakeDamage(1);                      
+        }
     }
 }
