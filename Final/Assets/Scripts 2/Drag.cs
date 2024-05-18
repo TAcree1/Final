@@ -1,32 +1,40 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Drag : MonoBehaviour
 {
-    bool isBeingHeld; // Determines if object is being held
-    Transform _transform; // Cache transform component
+    //variables for the game
+            
+    bool isBeingHeld;       //determines if objects is being held
 
-    void Start()
-    {
-        _transform = transform; // Cache transform component
-    }
-
+    // Update is called once per frame
     void Update()
     {
         if (isBeingHeld)
         {
-            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            _transform.localPosition = mousePos;
+            Vector2 mousePos;
+            mousePos = Input.mousePosition;
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+
+            gameObject.transform.localPosition = new Vector2(mousePos.x,mousePos.y);
         }
     }
 
     void OnMouseDown()
     {
-        isBeingHeld = true;
+        if (Input.GetMouseButton(0))       //left mouse click activates 
+        {
+            Vector2 mousePos;              //
+            mousePos = Input.mousePosition;
+            isBeingHeld = true;
+            Debug.Log("click");
+        }
     }
 
     void OnMouseUp()
     {
         isBeingHeld = false;
+        //transform.position = Vector2.zero;
     }
 }

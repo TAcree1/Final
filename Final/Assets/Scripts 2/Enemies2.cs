@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class Enemies2 : MonoBehaviour
 {
     //variables for the game
-    Health2 damage;
+    Health damage;
     public GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
-        damage = player.GetComponent<Health2>();
+        damage = player.GetComponent<Health>();
     }
 
     void OnTriggerEnter2D(Collider2D coll)
